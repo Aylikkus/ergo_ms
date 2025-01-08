@@ -1,7 +1,7 @@
 @echo off
 
-echo Changing directory to ergo_ms_api...
-cd %~dp0ergo_ms_api
+echo Changing directory to api...
+cd %~dp0api
 
 echo Deleting .venv...
 if exist .venv (
@@ -54,18 +54,13 @@ if not exist media (
 echo Running collectstatic command using Poetry...
 poetry run collectstatic
 
-poetry run stop_prod
-
-echo Running the production server using Poetry...
-start "" poetry run prod
-
 call deactivate.bat
 
 echo Changing directory back to the parent directory...
 cd ..
 
-echo Changing directory to ergo_ms_client...
-cd %~dp0ergo_ms_client
+echo Changing directory to client...
+cd %~dp0client
 
 echo Deleting node_modules and package-lock.json...
 if exist node_modules (
@@ -77,9 +72,6 @@ if exist package-lock.json (
 
 echo Installing npm packages...
 npm install
-
-echo Running the development server using npm...
-start "" npm run dev
 
 echo Pausing the script to keep the command prompt open...
 pause

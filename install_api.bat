@@ -1,7 +1,7 @@
 @echo off
 
-echo Changing directory to ergo_ms_api...
-cd %~dp0ergo_ms_api
+echo Changing directory to api...
+cd %~dp0api
 
 echo Deleting .venv...
 if exist .venv (
@@ -54,11 +54,7 @@ if not exist media (
 echo Running collectstatic command using Poetry...
 poetry run collectstatic
 
-poetry run stop_prod
-
-echo Running the production server using Poetry...
-start /B poetry run prod
-
 call deactivate.bat
 
+echo Pausing the script to keep the command prompt open...
 pause

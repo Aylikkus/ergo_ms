@@ -1,6 +1,7 @@
 @echo off
 
-cd %~dp0ergo_ms_client
+echo Changing directory to client...
+cd %~dp0client
 
 echo Deleting node_modules and package-lock.json...
 if exist node_modules (
@@ -13,4 +14,5 @@ if exist package-lock.json (
 echo Installing npm packages...
 npm install
 
+echo Pausing the script to keep the command prompt open...
 pause
