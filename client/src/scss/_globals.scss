@@ -1,0 +1,161 @@
+// Иконка
+.icon-flex {
+  display: inline-flex;
+}
+
+// Секция при наведении
+.hover-section {
+  transition: background-color $transition;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-secondary-background);
+  }
+}
+
+// Красивая прокрутка
+.beautiful-scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-secondary-background) transparent;
+}
+
+
+// Задний фон
+.layout-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(2px);
+  z-index: 1004;
+
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// Аватар
+.avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  // Avatar Initials if no images added
+  .avatar-initial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    background-color: $secondary;
+    font-weight: $font-weight-bold;
+  }
+  // Avatar Status indication
+  &.avatar-online,
+  &.avatar-offline,{
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      box-shadow: 0 0 0 2px $white;
+    }
+  }
+  &.avatar-online:after {
+    background-color: $success;
+  }
+  &.avatar-offline:after {
+    background-color: $secondary;
+  }
+}
+
+.avatar-group {
+  .avatar {
+    transition: all 0.25s ease;
+    img,
+    .avatar-initial {
+      border: 2px solid var(--color-secondary-background);
+    }
+    .avatar-initial {
+      background-color: shade-color($secondary, 35%);
+    }
+    &:hover {
+      z-index: 30;
+      transition: all 0.25s ease;
+    }
+  }
+  .avatar {
+    margin-left: -0.8rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .avatar-xs {
+    margin-left: -0.65rem;
+  }
+  .avatar-sm {
+    margin-left: -0.75rem;
+  }
+  .avatar-md {
+    margin-left: -0.9rem;
+  }
+  .avatar-lg {
+    margin-left: -1.5rem;
+  }
+  .avatar-xl {
+    margin-left: -1.75rem;
+  }
+}
+
+.pull-up {
+  transition: all 0.25s ease;
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: $box-shadow;
+    z-index: 30;
+    border-radius: 50%;
+  }
+}
+
+.text-smooth-animation {
+  transform: translateX(0);
+  opacity: 1;
+
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.1s ease-out;
+
+  &.hidden {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+}
+
+.apexcharts-tooltip {
+  box-shadow: 0 4px 12px 0 rgba(13, 35, 67, 0.03) !important;
+  background: var(--color-secondary-background) !important;
+}
+
+.no-select {
+  user-select: none;
+}
